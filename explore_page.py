@@ -33,12 +33,17 @@ def clean_education(x):
 #df['EdLevel'] = df['EdLevel'].apply(clean_education) 
 
 @st.cache_data
-
 def load_data():
     df = pd.read_csv("survey_results_public.csv")
-    st.write("Available columns:", df.columns.tolist())  # Debug line
-    df = df[["Country", "EdLevel", "YearsCodePro", "Employment", "Salary"]]
+    df = df[["Country_encoded", "EdLevel_encoded", "YearsCodePro", "Employment_encoded", "ConvertedComp"]]
+    df.rename(columns={
+        "Country_encoded": "Country",
+        "EdLevel_encoded": "EdLevel",
+        "Employment_encoded": "Employment",
+        "ConvertedComp": "Salary"
+    }, inplace=True)
     return df
+
 df = load_data()
 
 def show_explore_page():
