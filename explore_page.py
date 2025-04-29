@@ -36,6 +36,7 @@ def clean_education(x):
 
 def load_data():
     df = pd.read_csv("survey_results_public.csv")
+    st.write("Available columns:", df.columns.tolist())  # Debug line
     df = df[["Country", "EdLevel", "YearsCodePro", "Employment", "Salary"]]
     df = df[df["ConvertedComp"].notnull()]
     df = df.dropna()
