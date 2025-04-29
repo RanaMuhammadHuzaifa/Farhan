@@ -28,8 +28,8 @@ def show_predict_page():
 
     education = (
     "Less than a Bachelors",
-    "Bachelor’s degree",  # ← curly apostrophe
-    "Master’s degree",    # ← curly apostrophe
+    "Bachelor’s degree",  
+    "Master’s degree",   
     "Post grad"
 )
 
