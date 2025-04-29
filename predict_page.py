@@ -27,8 +27,12 @@ def show_predict_page():
     )
 
     education = (
-        "Less than a Bachelors", "Bachelor's degree", "Master's degree", "Post grad"
-    )
+    "Less than a Bachelors",
+    "Bachelor’s degree",  # ← curly apostrophe
+    "Master’s degree",    # ← curly apostrophe
+    "Post grad"
+)
+
 
     # User input fields
     country = st.selectbox("Country", countries)
