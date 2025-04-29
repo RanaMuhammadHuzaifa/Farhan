@@ -35,14 +35,18 @@ def clean_education(x):
 @st.cache_data
 def load_data():
     df = pd.read_csv("survey_results_public.csv")
-    df = df[["Country_encoded", "EdLevel_encoded", "YearsCodePro", "Employment_encoded", "ConvertedComp"]]
+
+    # Rename actual columns to expected names used in plotting functions
     df.rename(columns={
         "Country_encoded": "Country",
         "EdLevel_encoded": "EdLevel",
         "Employment_encoded": "Employment",
         "ConvertedComp": "Salary"
     }, inplace=True)
+
+    df = df[["Country", "EdLevel", "YearsCodePro", "Employment", "Salary"]]
     return df
+
 
 df = load_data()
 
