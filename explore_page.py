@@ -32,11 +32,11 @@ def clean_education(x):
 
 #df['EdLevel'] = df['EdLevel'].apply(clean_education) 
 
-@st.cache
+@st.cache_data
 
 def load_data():
     df = pd.read_csv("survey_results_public.csv")
-    df = df[["Country", "EdLevel", "YearsCodePro", "Employment", "ConvertedComp"]]
+    df = df[["Country", "EdLevel", "YearsCodePro", "Employment", "Salary"]]
     df = df[df["ConvertedComp"].notnull()]
     df = df.dropna()
     df = df[df["Employment"] == "Employed full-time"]
@@ -48,7 +48,7 @@ def load_data():
     df = df[df['Country'] != 'Other']
     df["YearsCodePro"] = df["YearsCodePro"].apply(clean_experience)
     df["EdLevel"] = df["EdLevel"].apply(clean_education)
-    df = df.rename({"ConvertedComp": "Salary"}, axis=1)
+    
     
     return df
 df = load_data()
